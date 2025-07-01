@@ -1,0 +1,182 @@
+/* approval.css */
+
+.approval-container {
+  padding: 20px;
+}
+
+.syllabus-details-container {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.syllabus-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.syllabus-header h2 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+}
+
+.syllabus-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.syllabus-section {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.syllabus-section h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.syllabus-field {
+  margin-bottom: 10px;
+}
+
+.syllabus-field label {
+  font-weight: 600;
+  display: inline-block;
+  width: 120px;
+  color: #555;
+}
+
+.clos-container {
+  display: grid;
+  gap: 10px;
+}
+
+.clo-item {
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 4px;
+  border-left: 4px solid #3498db;
+}
+
+.clo-header {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.clo-mapping {
+  display: flex;
+  gap: 15px;
+  font-size: 13px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.assessment-summary {
+  margin-top: 15px;
+}
+
+.assessment-summary h4 {
+  margin: 15px 0 8px 0;
+  font-size: 15px;
+}
+
+.assessment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.assessment-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.assessment-type {
+  flex: 2;
+}
+
+.assessment-weight {
+  flex: 1;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.assessment-slt {
+  flex: 1;
+  text-align: right;
+}
+
+.slt-summary {
+  display: grid;
+  gap: 8px;
+}
+
+.slt-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slt-row.total {
+  font-weight: bold;
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+.approval-actions {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.approval-actions textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.btn-approve {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-reject {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.error-message {
+  color: #dc3545;
+  padding: 20px;
+  text-align: center;
+}

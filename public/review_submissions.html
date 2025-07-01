@@ -1,0 +1,88 @@
+<!-- review_submission.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Submissions - ASVMS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/submission.css">
+</head>
+<body>
+  <!-- Reuse your sidebar from admin.html -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h2>ASVMS</h2>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="notifications.html"><i>🔔</i> Notifications</a></li>
+      <li><a href="admin.html"><i>📊</i> Dashboard</a></li>
+      <li><a href="review_submissions.html" class="active"><i>📋</i> Review Submissions</a></li>
+      <li><a href="approval_management.html"><i>✅</i> Approval Management</a></li>
+    </ul>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="user-info">
+        <span id="username-display">Admin User</span>
+        <span class="user-role">Admin</span>
+        <div class="user-avatar" id="user-avatar">AU</div>
+      </div>
+    </div>
+
+    <div class="submission-container">
+      <h1 class="dashboard-title">Review Syllabus Submissions</h1>
+      
+      <div class="filter-controls">
+        <select id="statusFilter" onchange="loadSubmissions()">
+          <option value="all">All Statuses</option>
+          <option value="submitted">Waiting Approval</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+        </select>
+
+      </div>
+
+      <div class="submission-list">
+        <table id="submissionTable">
+          <thead>
+            <tr>
+              <th>Course Code</th>
+              <th>Course Name</th>
+              <th>Lecturer</th>
+              <th>Version</th>
+              <th>Status</th>
+              <th>Submitted Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Modal -->
+  <div id="reviewModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Review Syllabus</h2>
+      <div id="modalContent"></div>
+      <div class="modal-actions" id="modalActions">
+        <textarea id="feedbackText" placeholder="Provide feedback (optional)"></textarea>
+        <div class="action-buttons">
+          <button class="btn-approve" onclick="approveSyllabus()">Approve</button>
+          <button class="btn-reject" onclick="rejectSyllabus()">Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/review_submissions.js"></script>
+</body>
+</html>

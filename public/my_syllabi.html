@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Syllabi - ASVMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/submission.css">
+</head>
+<body>
+    <!-- Reuse your sidebar from lecturer.html -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>ASVMS</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="notifications.html"><i>🔔</i> Notifications</a></li>
+            <li><a href="lecturer.html"><i>📊</i> Dashboard</a></li>
+            <li><a href="create_syllabus.html"><i>📝</i> Create Syllabus</a></li>
+            <li><a href="my_syllabi.html" class="active"><i>📚</i> My Syllabi</a></li>
+            <li><a href="submission_status.html"><i>🔄</i> Submission Status</a></li>
+        </ul>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="user-info">
+                <span id="username-display">Lecturer User</span>
+                <span class="user-role">Lecturer</span>
+                <div class="user-avatar" id="user-avatar">LU</div>
+            </div>
+        </div>
+
+        <div class="submission-container">
+            <h1 class="dashboard-title">My Syllabi</h1>
+            
+            <div class="filter-controls">
+                <select id="statusFilter" onchange="loadSyllabi()">
+                    <option value="all">All Statuses</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="submitted">Pending Review</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="Search by course..." onkeyup="loadSyllabi()">
+            </div>
+
+            <div class="submission-list">
+                <table id="syllabusTable">
+                    <thead>
+                        <tr>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                            <th>Version</th>
+                            <th>Status</th>
+                            <th>Last Updated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Modal -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Syllabus Details</h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Show submission success message if exists
+    const success = sessionStorage.getItem('lastSubmissionSuccess');
+    const message = sessionStorage.getItem('lastSubmissionMessage');
+    
+    if (success && message) {
+        alert(message);
+        sessionStorage.removeItem('lastSubmissionSuccess');
+        sessionStorage.removeItem('lastSubmissionMessage');
+    }
+    
+    // Rest of your page initialization...
+});
+  </script>
+    <script src="js/my_syllabi.js"></script>
+</body>
+</html>

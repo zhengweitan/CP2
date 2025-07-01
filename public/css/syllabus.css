@@ -1,0 +1,577 @@
+/* Syllabus Form Styles */
+/* syllabus.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f6f9fc;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.badge {
+  background: #007bff;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+  margin-left: 10px;
+}
+
+.back-link {
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.form-section h2 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.two-column {
+  display: flex;
+  gap: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.field-with-label {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.field-with-label input {
+  width: 100%;
+}
+
+.field-label {
+  font-size: 13px;
+  color: #333;
+  margin-top: 5px;
+}
+
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.dynamic-list .list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.dynamic-list .list-item input {
+  flex: 1;
+}
+
+.remove-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="button"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Section 2 */
+.section {
+  margin: 20px 0;
+}
+
+.clo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.clo-table th,
+.clo-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.add-btn-row {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.skill-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.skill-item input {
+  flex: 1;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  margin-top: 10px;
+}
+
+.clo-table textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Section 3 SLT Table Styles */
+.slt-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.slt-table th,
+.slt-table td {
+  border: 1px solid #ccc;
+  padding: 4px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.slt-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.slt-table input[type="number"],
+.slt-table input[type="text"] {
+  width: 50%;
+  min-width: 30px;
+  padding: 2px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.slt-table textarea {
+  width: 80%;
+  min-height: 60px;
+  padding: 2px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.slt-table select {
+  width: 100%;
+  padding: 2px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.total-cell {
+  background-color: #e9ecef;
+  font-weight: bold;
+}
+
+.subtotal-row {
+  background-color: #f1f3f4;
+}
+
+.subtotal-row td {
+  font-weight: bold;
+  background-color: #f1f3f4;
+}
+
+.subtotal-cell {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.slt-summary {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.summary-row label {
+  font-weight: bold;
+  margin: 0;
+}
+
+.summary-row span {
+  font-weight: bold;
+  padding: 4px 8px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.total-row {
+  border-top: 2px solid #007bff;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.total-row label,
+.total-row span {
+  color: #007bff;
+  font-size: 16px;
+}
+
+.checkbox-group {
+  margin: 20px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-top: 2px;
+  width: auto;
+}
+
+.checkbox-group label {
+  margin: 0;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+/* Section 4 */
+#special-requirements {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#special-requirements h4 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.remove-btn {
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.add-btn {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/*submit */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.btn-submit {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-submit:hover {
+  background-color: #218838;
+}
+
+.btn-submit:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Preview panel styles */
+.preview-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  padding: 8px 16px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.preview-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  max-height: 80vh;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 100;
+  overflow-y: auto;
+  display: none;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background: #2c3e50;
+  color: white;
+  border-radius: 8px 8px 0 0;
+}
+
+.preview-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.close-preview {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.preview-content {
+  padding: 15px;
+}
+
+.preview-section {
+  margin-bottom: 15px;
+}
+
+.preview-section h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #2c3e50;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+.preview-field {
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.preview-field .label {
+  font-weight: 600;
+  color: #555;
+}
+
+.preview-field .value {
+  word-break: break-word;
+}
+
+/* Assessment Preview Styles */
+.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.preview-table th, 
+.preview-table td {
+  padding: 6px 8px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.preview-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.preview-table tr:last-child td {
+  border-bottom: none;
+}
+
+.preview-field.total {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+  font-weight: 600;
+}
+
+.preview-field.total .value {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* PLO Guide Styles */
+#ploGuideModal {
+  z-index: 10000; /* Make sure it's above everything else */
+}
+
+.clo-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.info-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  color: #3498db;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.plo-table-section {
+  margin-top: 20px;
+}
+
+.plo-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.plo-header, .plo-row {
+  display: table-row;
+}
+
+.plo-cell {
+  display: table-cell;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.plo-header .plo-cell {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+/* Modal styles (if not already defined) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}

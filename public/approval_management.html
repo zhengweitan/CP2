@@ -1,0 +1,55 @@
+<!-- approval_management.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Approval Management - ASVMS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/approval.css">
+</head>
+<body>
+  <!-- Reuse your admin sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h2>ASVMS</h2>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="notifications.html"><i>🔔</i> Notifications</a></li>
+      <li><a href="admin.html"><i>📊</i> Dashboard</a></li>
+      <li><a href="review_submissions.html"><i>📋</i> Review Submissions</a></li>
+      <li><a href="approval_management.html" class="active"><i>✅</i> Approval Management</a></li>
+    </ul>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="user-info">
+        <span id="username-display">Admin User</span>
+        <span class="user-role">Admin</span>
+        <div class="user-avatar" id="user-avatar">AU</div>
+      </div>
+    </div>
+
+    <div class="approval-container">
+      <h1 class="dashboard-title">Approval Management</h1>
+      
+      <div id="syllabusDetails" class="syllabus-details-container">
+        <!-- Syllabus details will be loaded here -->
+      </div>
+
+      <div class="approval-actions">
+        <textarea id="feedbackText" placeholder="Enter feedback (required for rejection)"></textarea>
+        <div class="action-buttons">
+          <button id="approveBtn" class="btn-approve">Approve</button>
+          <button id="rejectBtn" class="btn-reject">Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/approval_management.js"></script>
+</body>
+</html>

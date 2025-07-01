@@ -1,0 +1,562 @@
+<!-- create-syllabus.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create New Syllabus</title>
+  <link rel="stylesheet" href="css/syllabus.css" />
+</head>
+<body>
+  <a href="lecturer.html" class="back-link">← Back to Dashboard</a>
+  <div class="container">
+    <header>
+      <h1>Create New Syllabus</h1>
+      <div class="user-info">Lecturer User <span class="badge">Lecturer</span></div>
+    </header>
+
+    <form id="syllabusForm" method="POST">
+      <section class="form-section">
+        <h2>1. Course Information</h2>
+
+        <div class="form-group two-column">
+          <div>
+            <label for="courseCode">Course Code: (C)</label>
+            <input type="text" id="courseCode" name="courseCode" required>
+          </div>
+          <div>
+            <label for="courseName">Course Name: (C)</label>
+            <input type="text" id="courseName" name="courseName" required>
+          </div>
+        </div>
+
+        <div class="form-group two-column">
+          <div>
+            <label for="creditValue">Credit Value: (C)</label>
+            <input type="number" id="creditValue" name="creditValue" min="1" required>
+          </div>
+          <div>
+            <label for="courseClassification">Course Classification: (C)</label>
+            <select id="courseClassification" name="courseClassification" required>
+              <option value="">--Select--</option>
+              <option value="Compulsory">Compulsory</option>
+              <option value="Major">Major (core)</option>
+              <option value="Minor">Minor</option>
+              <option value="Elective Core">Elective (core)</option>
+              <option value="Elective Free">Elective (open/free)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="synopsis">Synopsis: (C)</label>
+          <textarea id="synopsis" name="synopsis" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group row">
+        <label>Semester and Year Offered: (C)</label>
+        <div class="row-group">
+            <div class="field-with-label">
+                <input type="number" id="semester" name="semester" min="1" max="3" required>
+                <span class="field-label">Semester</span>
+            </div>
+            <div class="field-with-label">
+                <input type="number" id="year" name="year" min="2000" max="2100" required>
+                <span class="field-label">Year</span>
+            </div>
+            <div class="field-with-label">
+                <input type="text" id="remarks" name="remarks" placeholder="Remarks">
+                <span class="field-label">Remarks</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group dynamic-list">
+          <label>Name(s) of Academic Staff: (C)</label>
+          <div id="staffList">
+            <div class="list-item">
+              <input type="text" name="academicStaff[]" required>
+              <button type="button" class="remove-btn" onclick="removeItem(this)">×</button>
+            </div>
+          </div>
+          <button type="button" onclick="addStaff()">+ Add Staff</button>
+        </div>
+
+        <div class="form-group dynamic-list">
+          <label>Pre-requisite/Co-requisite (if any): (O)</label>
+          <div id="prereqList">
+            <div class="list-item">
+              <input type="text" name="prerequisites[]">
+              <button type="button" class="remove-btn" onclick="removeItem(this)">×</button>
+            </div>
+          </div>
+          <button type="button" onclick="addPrerequisite()">+ Add Pre-requisite</button>
+        </div>
+
+        <!-- Section 2: Learning Outcomes -->
+        <div class="section">
+        <h3>2. Learning Outcomes</h3>
+
+        <!-- CLO Table -->
+        <label>Course Learning Outcomes (CLO): (C)</label>
+        <button type="button" class="info-btn" onclick="togglePloGuide()">ℹ️ PLO Guide</button>
+        <table class="clo-table" id="cloTable">
+            <thead>
+            <tr>
+                <th>CLO</th>
+                <th>Description</th>
+                <th>Mapping with PLO</th>
+                <th>Mapping with MQF Cluster</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>CLO1</td>
+                <td><textarea name="cloDescription[]" required rows="3"></textarea></td>
+                <td>
+                <select name="ploMapping[]" required>
+                    <option value="">Select PLO</option>
+                    <option value="PLO1">PLO1</option>
+                    <option value="PLO2">PLO2</option>
+                    <option value="PLO3">PLO3</option>
+                    <option value="PLO4">PLO4</option>
+                    <option value="PLO5">PLO5</option>
+                    <option value="PLO6">PLO6</option>
+                    <option value="PLO7">PLO7</option>
+                    <option value="PLO8">PLO8</option>
+                    <option value="PLO9">PLO9</option>
+                    <option value="PLO10">PLO10</option>
+                    <option value="PLO11">PLO11</option>
+                </select>
+                </td>
+                <td>
+                <select name="mqfMapping[]" required>
+                    <option value="">Select MQF</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                    <option value="C3A">C3A</option>
+                    <option value="C3B">C3B</option>
+                    <option value="C3C">C3C</option>
+                    <option value="C3D">C3D</option>
+                    <option value="C3E">C3E</option>
+                    <option value="C3F">C3F</option>
+                    <option value="C4A">C4A</option>
+                    <option value="C4B">C4B</option>
+                    <option value="C5">C5</option>
+                </select>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Add CLO Button -->
+        <div class="add-btn-row">
+            <button type="button" onclick="addClo()">+ Add CLO</button>
+        </div>
+
+        <!-- Transferrable Skills Section -->
+        <label>Transferrable Skills (if applicable): (O)</label>
+        <div id="skillsList">
+            <div class="skill-item">
+            <input type="text" name="skills[]">
+            <button type="button" onclick="removeSkill(this)">✕</button>
+            </div>
+        </div>
+
+                <!-- Add Skill Button -->
+        <div class="add-btn-row">
+            <button type="button" onclick="addSkill()">+ Add Skill</button>
+        </div>
+
+        <!-- Open-ended Response -->
+        <label>Open-ended Response (if any):</label>
+        <textarea name="openResponse" rows="3"></textarea>
+        </div>
+
+        <!-- Section 3: Student Learning Time (SLT) -->
+        <div class="section">
+          <h3>3. Student Learning Time (SLT)</h3>
+
+          <!-- Course Content SLT -->
+          <label>Course Content SLT: (C)</label>
+          <table class="slt-table" id="courseContentTable">
+            <thead>
+              <tr>
+                <th rowspan="4">Course Content Outline and Subtopics</th>
+                <th rowspan="4">CLO</th>
+                <th colspan="9">Learning and Teaching Activities</th>
+                <th rowspan="4">Total SLT</th>
+                <th rowspan="4">Remove</th>
+              </tr>
+              <tr>
+                <th colspan="8">Face-to-face (F2F)</th>
+                <th colspan="1">NF2F Independent Learning</th>
+              </tr>
+              <tr>
+                <th colspan="4">Physical</th>
+                <th colspan="4">Online</th>
+                <th colspan="1">Asynchronous</th>
+              </tr>
+              <tr>
+                <th>L</th>
+                <th>T</th>
+                <th>P</th>
+                <th>O</th>
+                <th>L</th>
+                <th>T</th>
+                <th>P</th>
+                <th>O</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><textarea name="courseContent[]" required rows="3"></textarea></td>
+                <td>
+                  <select name="contentClo[]" required>
+                    <option value="">Select CLO</option>
+                  </select>
+                </td>
+                <td><input type="number" name="contentPhysicalL[]" min="0" value="0" onchange="calculateContentRowTotal(this)"></td>
+                <td><input type="number" name="contentPhysicalT[]" min="0" value="0" onchange="calculateContentRowTotal(this)"></td>
+                <td><input type="number" name="contentPhysicalP[]" min="0" value="0" onchange="calculateContentRowTotal(this)"></td>
+                <td><input type="number" name="contentPhysicalO[]" min="0" value="0" onchange="calculateContentRowTotal(this)"></td>
+                <td><input type="number" name="contentOnlineL[]" min="0" value="0" onchange="calculateContentRowTotal(this)"></td>
+                <td><input type="number" name="contentOnlineT[]" min="0" value="0" onchange="calculateContentRowTotal(this)"></td>
+                <td><input type="number" name="contentOnlineP[]" min="0" value="0" onchange="calculateContentRowTotal(this)"></td>
+                <td><input type="number" name="contentOnlineO[]" min="0" value="0" onchange="calculateContentRowTotal(this)"></td>
+                <td><input type="number" name="contentAsync[]" min="0" value="0" onchange="calculateContentRowTotal(this)"></td>
+                <td class="total-cell">0</td>
+                <td><button type="button" class="remove-btn" onclick="removeContentRow(this)">×</button></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="subtotal-row">
+                <td colspan="11"><strong>Sub-total SLT:</strong></td>
+                <td class="subtotal-cell" id="contentSubtotal"><strong>0</strong></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+          <div class="add-btn-row">
+            <button type="button" onclick="addContent()">+ Add Content</button>
+          </div>
+
+        <!-- Continuous Assessment SLT - Modified -->
+        <label>Continuous Assessment SLT: (C)</label>
+        <table class="slt-table" id="continuousAssessmentTable">
+          <thead>
+            <tr>
+              <th rowspan="4">Continuous Assessment</th>
+              <th rowspan="4">%</th>
+              <th colspan="3">Learning and Teaching Activities</th>
+              <th rowspan="4">Total SLT</th>
+              <th rowspan="4">Remove</th>
+            </tr>
+            <tr>
+              <th colspan="2">Face-to-face (F2F)</th>
+              <th colspan="1">NF2F Independent Learning</th>
+            </tr>
+            <tr>
+              <th>Physical</th>
+              <th>Online</th>
+              <th>Asynchronous</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="continuousAssessment[]" required></td>
+              <td><input type="number" name="continuousPercentage[]" min="0" max="100" required onchange="validatePercentage()"></td>
+              <td><input type="number" name="contPhysical[]" min="0" value="0" onchange="calculateContinuousRowTotal(this)"></td>
+              <td><input type="number" name="contOnline[]" min="0" value="0" onchange="calculateContinuousRowTotal(this)"></td>
+              <td><input type="number" name="contAsync[]" min="0" value="0" onchange="calculateContinuousRowTotal(this)"></td>
+              <td class="total-cell">0</td>
+              <td><button type="button" class="remove-btn" onclick="removeContinuousRow(this)">×</button></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="subtotal-row">
+              <td colspan="5"><strong>Sub-total SLT:</strong></td>
+              <td class="subtotal-cell" id="continuousSubtotal"><strong>0</strong></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+          <div class="add-btn-row">
+            <button type="button" onclick="addContinuousAssessment()">+ Add Assessment</button>
+          </div>
+
+        <label>Final Assessment SLT: (C)</label>
+        <table class="slt-table" id="finalAssessmentTable">
+          <thead>
+            <tr>
+              <th rowspan="4">Final Assessment</th>
+              <th rowspan="4">%</th>
+              <th colspan="3">Learning and Teaching Activities</th>
+              <th rowspan="4">Total SLT</th>
+              <th rowspan="4">Remove</th>
+            </tr>
+            <tr>
+              <th colspan="2">Face-to-face (F2F)</th>
+              <th colspan="1">NF2F Independent Learning</th>
+            </tr>
+            <tr>
+              <th>Physical</th>
+              <th>Online</th>
+              <th>Asynchronous</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="finalAssessment[]" required></td>
+              <td><input type="number" name="finalPercentage[]" min="0" max="100" required onchange="validatePercentage()"></td>
+              <td><input type="number" name="finalPhysical[]" min="0" value="0" onchange="calculateFinalRowTotal(this)"></td>
+              <td><input type="number" name="finalOnline[]" min="0" value="0" onchange="calculateFinalRowTotal(this)"></td>
+              <td><input type="number" name="finalAsync[]" min="0" value="0" onchange="calculateFinalRowTotal(this)"></td>
+              <td class="total-cell">0</td>
+              <td><button type="button" class="remove-btn" onclick="removeFinalRow(this)">×</button></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="subtotal-row">
+              <td colspan="5"><strong>Sub-total SLT:</strong></td>
+              <td class="subtotal-cell" id="finalSubtotal"><strong>0</strong></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+          <div class="add-btn-row">
+            <button type="button" onclick="addFinalAssessment()">+ Add Assessment</button>
+          </div>
+
+          <!-- SLT Summary -->
+          <div class="slt-summary">
+            <div class="summary-row">
+              <label>SLT for Assessment (Continuous + Final):</label>
+              <span id="assessmentSLT">0</span>
+            </div>
+            <div class="summary-row total-row">
+              <label>GRAND TOTAL SLT:</label>
+              <span id="grandTotalSLT">0</span>
+            </div>
+          </div>
+
+          <!-- Industrial Training Checkbox -->
+          <div class="checkbox-group">
+            <input type="checkbox" id="industrialTraining" name="industrialTraining">
+            <label for="industrialTraining">
+              Please tick (✓) if this course is Industrial Training/Clinical Placement/Practicum using 50% of Effective Learning Time (ELT)
+            </label>
+          </div>
+        </div>
+
+        <!-- Section 4: Special Requirements & References -->
+        <section id="special-requirements">
+          <h4>4. Special Requirements & References</h4>
+
+          <div class="form-group">
+            <label>Special Requirements (e.g., software, lab): (O)</label>
+            <div id="requirements-list">
+              <div class="input-group">
+                <input type="text" name="requirements[]" class="form-control" />
+                <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+              </div>
+            </div>
+            <button type="button" class="add-btn" onclick="addField('requirements-list')">+ Add Requirement</button>
+          </div>
+
+          <div class="form-group">
+            <label>References: (O)</label>
+            <div id="references-list">
+              <div class="input-group">
+                <input type="text" name="references[]" class="form-control" />
+                <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+              </div>
+            </div>
+            <button type="button" class="add-btn" onclick="addField('references-list')">+ Add Reference</button>
+          </div>
+
+          <div class="form-group">
+            <label>Other Additional Information: (O)</label>
+            <div id="additional-info-list">
+              <div class="input-group">
+                <input type="text" name="additionalInfo[]" class="form-control" />
+                <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+              </div>
+            </div>
+            <button type="button" class="add-btn" onclick="addField('additional-info-list')">+ Add Information</button>
+          </div>
+        </section>
+
+      </section>
+        <div class="form-actions">
+          <button type="button" id="submitBtn" class="btn-submit">Submit for Approval</button>
+        </div>
+
+        <!-- Add this button fixed at top right -->
+        <button id="previewToggle" class="preview-toggle-btn">Show Preview</button>
+
+        <!-- Preview panel -->
+        <div id="previewPanel" class="preview-panel">
+          <div class="preview-header">
+            <h3>Syllabus Preview</h3>
+            <button class="close-preview" onclick="togglePreview()">&times;</button>
+          </div>
+          <div class="preview-content" id="previewContent">
+            <!-- Preview content will be generated here -->
+          </div>
+        </div>
+        <!-- PLO Guide Modal -->
+        <div id="ploGuideModal" class="modal">
+          <div class="modal-content" style="max-width: 90%; max-height: 80vh; overflow-y: auto;">
+            <span class="close-btn" onclick="togglePloGuide()">&times;</span>
+            <h2>PLO Guide</h2>
+            <div class="plo-table-section">
+              <div class="plo-table">
+                <div class="plo-header">
+                  <div class="plo-cell">PLO</div>
+                  <div class="plo-cell">Cluster</div>
+                  <div class="plo-cell">MQF LO Domains 2nd Edition</div>
+                  <div class="plo-cell">Learning Taxonomy</div>
+                  <div class="plo-cell">L&T Methodologies</div>
+                  <div class="plo-cell">Suggested Assessment</div>
+                </div>
+
+                <!-- Row for PLO1 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO1</div>
+                  <div class="plo-cell">1</div>
+                  <div class="plo-cell">Knowledge and Understanding</div>
+                  <div class="plo-cell">Cognitive</div>
+                  <div class="plo-cell">Lecture / Tutorial</div>
+                  <div class="plo-cell">Written Examination</div>
+                </div>
+
+                <!-- Row for PLO2 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO2</div>
+                  <div class="plo-cell">2</div>
+                  <div class="plo-cell">Cognitive</div>
+                  <div class="plo-cell">Cognitive</div>
+                  <div class="plo-cell">Case Study / Project / Tutorial / Group Work / Discussion</div>
+                  <div class="plo-cell">Written Examination, Presentation, Projects, Essays</div>
+                </div>
+
+                <!-- Row for PLO3 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO3</div>
+                  <div class="plo-cell">3</div>
+                  <div class="plo-cell">Functional Skills: Practical Skills</div>
+                  <div class="plo-cell">Psychomotor</div>
+                  <div class="plo-cell">Practical / Demonstration</div>
+                  <div class="plo-cell">Practical Tests</div>
+                </div>
+
+                <!-- Row for PLO4 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO4</div>
+                  <div class="plo-cell">3</div>
+                  <div class="plo-cell">Functional Skills: Interpersonal</div>
+                  <div class="plo-cell">Affective</div>
+                  <div class="plo-cell">Case Study / Project / Tutorial / Group Work / Discussion / Role Play</div>
+                  <div class="plo-cell">Peer-Evaluation, Presentation</div>
+                </div>
+
+                <!-- Row for PLO5 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO5</div>
+                  <div class="plo-cell">3</div>
+                  <div class="plo-cell">Functional Skills: Communication</div>
+                  <div class="plo-cell">Affective</div>
+                  <div class="plo-cell">Project / Presentation / Case Study / Tutorial</div>
+                  <div class="plo-cell">Presentation</div>
+                </div>
+
+                <!-- Row for PLO6 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO6</div>
+                  <div class="plo-cell">3</div>
+                  <div class="plo-cell">Functional Skills: Digital</div>
+                  <div class="plo-cell">Psychomotor / Affective</div>
+                  <div class="plo-cell">Practical / Demonstration / Case Study / Project / Group Work</div>
+                  <div class="plo-cell">Projects</div>
+                </div>
+
+                <!-- Row for PLO7 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO7</div>
+                  <div class="plo-cell">3</div>
+                  <div class="plo-cell">Functional Skills: Numeracy</div>
+                  <div class="plo-cell">Cognitive</div>
+                  <div class="plo-cell">Case Study / Project / Tutorial / Group Work</div>
+                  <div class="plo-cell">Written Examination, Presentation</div>
+                </div>
+
+                <!-- Row for PLO8 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO8</div>
+                  <div class="plo-cell">3</div>
+                  <div class="plo-cell">Functional Skills: Leadership, Autonomy and Responsibility</div>
+                  <div class="plo-cell">Affective</div>
+                  <div class="plo-cell">Case Study / Project / Tutorial / Group Work / Discussion / Industrial Attachment</div>
+                  <div class="plo-cell">Peer-Evaluation, Projects, Presentation</div>
+                </div>
+
+                <!-- Row for PLO9 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO9</div>
+                  <div class="plo-cell">4</div>
+                  <div class="plo-cell">Personal Skills</div>
+                  <div class="plo-cell">Affective</div>
+                  <div class="plo-cell">Case Study / Project / Group Work</div>
+                  <div class="plo-cell">Projects, Individual Portfolios</div>
+                </div>
+
+                <!-- Row for PLO10 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO10</div>
+                  <div class="plo-cell">4</div>
+                  <div class="plo-cell">Entrepreneurial Skills</div>
+                  <div class="plo-cell">Affective</div>
+                  <div class="plo-cell">Case Study / Project / Group Work / Industrial Attachment / Discussion</div>
+                  <div class="plo-cell">Project, Presentation, Essay</div>
+                </div>
+
+                <!-- Row for PLO11 -->
+                <div class="plo-row">
+                  <div class="plo-cell">PLO11</div>
+                  <div class="plo-cell">5</div>
+                  <div class="plo-cell">Ethics and Professionalism</div>
+                  <div class="plo-cell">Affective</div>
+                  <div class="plo-cell">Case Study / Project / Tutorial / Discussion / Industrial Attachment</div>
+                  <div class="plo-cell">Project, Presentation, Essay</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </form>
+  </div>
+
+  <!-- Add this script at the end of the body -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const isEditMode = urlParams.get('edit') === 'true';
+        
+        // Hide preview for rejected syllabi (edit mode)
+        if (isEditMode) {
+            const previewToggle = document.getElementById('previewToggle');
+            const previewPanel = document.getElementById('previewPanel');
+            if (previewToggle && previewPanel) {
+                previewToggle.style.display = 'none';
+                previewPanel.style.display = 'none';
+            }
+        }
+    });
+</script>
+  <script src="js/create_syllabus.js"></script>
+</body>
+</html>

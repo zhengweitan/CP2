@@ -1,4 +1,4 @@
-/* style.css */
+/* login.css */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #eef3f8;
@@ -7,26 +7,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   
-  .form-container {
+.form-container {
     width: 350px;
     padding: 30px;
     background-color: #fff;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
-  }
+}
   
-  .form-container input {
+.form-container input {
     width: 100%;
     padding: 10px;
     margin: 12px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
+}
   
-  .form-container button {
+.form-container button {
     width: 100%;
     padding: 10px;
     background-color: #0077cc;
@@ -36,24 +36,23 @@ body {
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
-  }
+}
   
-  .form-container button:hover {
+.form-container button:hover {
     background-color: #005fa3;
-  }
+}
   
-  .logo {
+.logo {
     width: 80px;
     margin-bottom: 15px;
-  }
+}
   
-  .top-right-logo {
+.top-right-logo {
     position: absolute;
     top: 15px;
     right: 20px;
-  }
+}
   
-  .top-right-logo img {
+.top-right-logo img {
     height: 70px;
-  }
-  
+}

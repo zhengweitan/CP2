@@ -1,0 +1,87 @@
+<!-- lecturer.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASVMS - Lecturer Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>ASVMS</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="notifications.html">
+                    <i>🔔</i> Notifications
+                </a>
+            </li>
+            <li><a href="lecturer.html" class="active"><i>📊</i> Dashboard</a></li>
+            <li><a href="create_syllabus.html"><i>📝</i> Create Syllabus</a></li>
+            <li><a href="my_syllabi.html"><i>📚</i> My Syllabi</a></li>
+            <li><a href="submission_status.html"><i>🔄</i> Submission Status</a></li>
+        </ul>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="user-info">
+                <span id="username-display">Lecturer User</span>
+                <span class="user-role">Lecturer</span>
+                <div class="user-avatar" id="user-avatar">LU</div>
+            </div>
+            
+            <div class="search-bar">
+                <span>🔍</span>
+                <input type="text" placeholder="Search...">
+            </div>
+        
+            <div class="notification-dropdown">
+                <button class="notification-icon" onclick="toggleNotifications()">🔔
+                    <span class="notification-badge" id="unread-badge" style="display: none;">0</span>
+                </button>
+                <div class="dropdown-content" id="notification-dropdown">
+                    <div class="dropdown-header">
+                        <h4>Recent Notifications</h4>
+                        <a href="notifications.html">View All</a>
+                    </div>
+                    <div class="notification-items" id="notification-preview">
+                        <!-- Notifications will load here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Title -->
+        <h1 class="dashboard-title">Lecturer Dashboard</h1>
+
+        <!-- Features Grid -->
+        <div class="features-list">
+            <a href="create_syllabus.html" class="feature-card">
+                <div class="card-icon">📝</div>
+                <h3>Create Syllabus</h3>
+                <p>Create new course syllabus</p>
+            </a>
+            <a href="my_syllabi.html" class="feature-card">
+                <div class="card-icon">📚</div>
+                <h3>My Syllabi</h3>
+                <p>View and manage your syllabi</p>
+            </a>
+            <a href="submission_status.html" class="feature-card">
+                <div class="card-icon">🔄</div>
+                <h3>Submission Status</h3>
+                <p>Track your submission status</p>
+            </a>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
