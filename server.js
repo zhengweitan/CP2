@@ -9,6 +9,10 @@ const PORT = 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+// Serve login.html at the root URL
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
 
 // Database setup
 const db = new sqlite3.Database('./database.db', (err) => {
